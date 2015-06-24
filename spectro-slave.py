@@ -27,6 +27,5 @@ while True:
         wiringpi.digitalWrite(16, g)
         wiringpi.digitalWrite(20, y)
         wiringpi.digitalWrite(21, r)
-        print height
     else:
         print matrix
