@@ -4,6 +4,7 @@ Traffic Light Spectrograph using a Raspberry Pi
 Prerequisites:
 ----------
 Install WiringPi and AlsaAudio for Python
+
 Add the user to the audio group
 
 Usage:
