@@ -1,6 +1,6 @@
 #!/usr/bin/env python 
 
-import select, json, socket
+import select, json, socket, sys
 import wiringpi2 as wiringpi
 
 PORT = 50000
