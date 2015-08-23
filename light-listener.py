@@ -1,3 +1,5 @@
+#!/usr/bin/env python 
+
 import select, json, socket
 import wiringpi2 as wiringpi
 
