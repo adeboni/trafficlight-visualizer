@@ -11,6 +11,9 @@ s.setblocking(0)
 
 wiringpi.wiringPiSetup()
 wiringpi.wiringPiSetupGpio()
+wiringpi.pinMode(16, 1)
+wiringpi.pinMode(20, 1)
+wiringpi.pinMode(21, 1)
 
 while True:
 	result = select.select([s],[],[])
