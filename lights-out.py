@@ -15,13 +15,15 @@ light_socket.bind(('', 0))
 light_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 
+dimx = 2
+dimy = 3
+light_state = [[0 for x in range(dimx)] for y in range(dimy)]
 pattern = [[0,1,0],[1,0,1],[0,1,0]]
-light_state = [[0,0,0],[0,0,0]]
 
 def toggle(x, y):
 	for i in [-1, 0, 1]:
 		for j in [-1, 0, 1]:
-			if x+i >= 0 and x+i < 3 and y+j >= 0 and y+j < 2:
+			if x+i >= 0 and x+i < dimy and y+j >= 0 and y+j < dimx:
 				light_state[y+j][x+i] ^= pattern[j+1][i+1]
 			
 while True:
