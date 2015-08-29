@@ -21,7 +21,7 @@ i = 0
 
 def audio_listener(x):
 	global vol
-    while True:
+	while True:
 		l,data = inp.read()
 		if l:
 			vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 10)
