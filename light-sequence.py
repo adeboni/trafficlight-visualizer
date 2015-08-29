@@ -24,10 +24,16 @@ if has_alsa:
 
 	def audio_listener(x):
 		global vol
+		total = 0.42
+		count = 1
+		
 		while True:
 			l,data = inp.read()
 			if l:
-				vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 7 - 0.42)
+				vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 7 - total / count)
+				total += vol
+				count += 1
+				
 			time.sleep(0.001)
 
 	thread.start_new_thread(audio_listener, (0, ))
