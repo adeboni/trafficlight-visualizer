@@ -1,6 +1,7 @@
 #!/usr/bin/env python 
 
 import select, json, socket, sys, alsaaudio, time, audioop, math
+from threading import Thread
 
 PORT = 50000
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -15,13 +16,20 @@ inp.setrate(8000)
 inp.setformat(alsaaudio.PCM_FORMAT_S16_LE)
 inp.setperiodsize(160)
 
+
 vol = 0.0
 i = 0
+
+def audio_listener():
+    while True:
+		l,data = inp.read()
+		if l:
+			vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 10)
+
+thread = Thread(target = threaded_function)
+thread.start()
+			
 while True:
-	time.sleep(0.05)
-	l,data = inp.read()
-	if l:
-		vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 10)
 	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
 	time.sleep(1.0 - vol)
