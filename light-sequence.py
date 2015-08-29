@@ -18,10 +18,10 @@ inp.setperiodsize(160)
 vol = 2.0
 i = 0
 while True:
-	time.sleep(1.0)
+	time.sleep(0.01)
 	l,data = inp.read()
 	if l:
-		vol = 2.0 - 1.0 * audioop.max(data, 2) / 750
+		vol = 1.0 * audioop.max(data, 2) / 750
 	#s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
 	print vol
