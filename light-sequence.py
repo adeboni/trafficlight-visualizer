@@ -24,18 +24,18 @@ if has_alsa:
 
 	def audio_listener(x):
 		global vol
-		total = 0.5
+		total = 1
 		count = 1
 		
 		while True:
 			l,data = inp.read()
 			if l:
 				vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 5)
-				print vol
 				if (vol < 1.1 * total / count and vol > 0.9 * total / count):
 					total += vol
 					count += 1
 				vol -= total / count
+				vol /= 2
 				
 			time.sleep(0.001)
 
