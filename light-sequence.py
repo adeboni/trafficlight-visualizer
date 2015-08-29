@@ -20,6 +20,7 @@ vol = 0.0
 i = 0
 
 def audio_listener(x):
+	global vol
     while True:
 		l,data = inp.read()
 		if l:
