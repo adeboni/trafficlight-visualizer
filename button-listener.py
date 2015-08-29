@@ -18,6 +18,11 @@ wiringpi.pinMode(26, 0)
 wiringpi.pullUpDnControl(26, 2) 
 
 while True:
+	print "1: " + wiringpi.digitalRead(13)
+	print "2: " + wiringpi.digitalRead(19)
+	print "3: " + wiringpi.digitalRead(26)
+	time.sleep(0.1)
+	"""
 	if not wiringpi.digitalRead(13):
 		s.sendto(json.dumps([int(sys.argv[1]), 0]), ('<broadcast>', PORT))
 		print 1
@@ -30,3 +35,4 @@ while True:
 		s.sendto(json.dumps([int(sys.argv[1]), 2]), ('<broadcast>', PORT))
 		print 3
 		time.sleep(0.05)
+	"""
