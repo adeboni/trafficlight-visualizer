@@ -19,13 +19,13 @@ inp.setperiodsize(160)
 vol = 0.0
 i = 0
 
-def audio_listener():
+def audio_listener(x):
     while True:
 		l,data = inp.read()
 		if l:
 			vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 10)
 
-thread.start_new_thread(audio_listener)
+thread.start_new_thread(audio_listener, (0, ))
 			
 while True:
 	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
