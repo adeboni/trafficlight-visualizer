@@ -15,8 +15,8 @@ light_socket.bind(('', 0))
 light_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 
-dimx = 2
-dimy = 3
+dimx = 3
+dimy = 2
 lights = [[0 for x in range(dimx)] for y in range(dimy)]
 pattern = [[0,1,0],[1,0,1],[0,1,0]]
 
