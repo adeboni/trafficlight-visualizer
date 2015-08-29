@@ -7,7 +7,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.bind(('', 0))
 s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
-seq = [[0,0,0],[0,0,1],[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1]]
+seq = [[[0,0,0]],[[0,0,1]],[[0,1,0]],[[0,1,1]],[[1,0,0]],[[1,0,1]],[[1,1,0]],[[1,1,1]]]
 
 i = 0
 while True:
