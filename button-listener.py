@@ -18,12 +18,12 @@ wiringpi.pinMode(26, 0)
 wiringpi.pullUpDnControl(26, 2) 
 
 while True:
-	if wiringpi.digitalRead(23):
+	if wiringpi.digitalRead(13):
 		s.sendto(json.dumps([int(sys.argv[1]), 0]), ('<broadcast>', PORT))
 		time.sleep(0.05)
-	elif wiringpi.digitalRead(24):
+	elif wiringpi.digitalRead(19):
 		s.sendto(json.dumps([int(sys.argv[1]), 1]), ('<broadcast>', PORT))
 		time.sleep(0.05)
-	elif wiringpi.digitalRead(25):
+	elif wiringpi.digitalRead(26):
 		s.sendto(json.dumps([int(sys.argv[1]), 2]), ('<broadcast>', PORT))
 		time.sleep(0.05)
