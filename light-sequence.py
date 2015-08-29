@@ -1,7 +1,6 @@
 #!/usr/bin/env python 
 
-import select, json, socket, sys, alsaaudio, time, audioop, math
-from threading import Thread
+import select, json, socket, sys, alsaaudio, time, audioop, math, thread
 
 PORT = 50000
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -26,8 +25,7 @@ def audio_listener():
 		if l:
 			vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 10)
 
-thread = Thread(target = threaded_function)
-thread.start()
+thread.start_new_thread(audio_listener)
 			
 while True:
 	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
