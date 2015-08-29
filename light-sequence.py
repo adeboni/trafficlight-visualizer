@@ -15,13 +15,14 @@ inp.setrate(8000)
 inp.setformat(alsaaudio.PCM_FORMAT_S16_LE)
 inp.setperiodsize(160)
 
-	
+vol = 0.0
 i = 0
 while True:
-	#s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
-	i += 1
-	time.sleep(0.01) # change this according to volume
-
 	l,data = inp.read()
 	if l:
-		print 1.0 * audioop.max(data, 2) / 1000
+		vol = 1.0 * audioop.max(data, 2) / 750
+	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
+	i += 1
+	time.sleep(2 - vol) # change this according to volume
+
+	
