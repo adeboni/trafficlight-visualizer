@@ -25,7 +25,8 @@ def toggle(x, y):
 		for j in [-1, 0, 1]:
 			if x+j >= 0 and x+j < dimy and y+i >=0 and y+i < dimx:
 				lights[x+j][y+i] ^= pattern[j+1][i+1]
-			
+
+light_socket.sendto(json.dumps(lights), ('<broadcast>', LIGHT_PORT))				
 while True:
 	result = select.select([button_socket],[],[])
 	light_change = json.loads(result[0][0].recv(BUFFER))

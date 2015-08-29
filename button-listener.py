@@ -20,8 +20,11 @@ wiringpi.pullUpDnControl(26, 2)
 while True:
 	if not wiringpi.digitalRead(13):
 		s.sendto(json.dumps([int(sys.argv[1]), 0]), ('<broadcast>', PORT))
+		time.sleep(0.1)
 	if not wiringpi.digitalRead(19):
 		s.sendto(json.dumps([int(sys.argv[1]), 1]), ('<broadcast>', PORT))
+		time.sleep(0.1)
 	if not wiringpi.digitalRead(26):
 		s.sendto(json.dumps([int(sys.argv[1]), 2]), ('<broadcast>', PORT))
+		time.sleep(0.1)
 	time.sleep(0.05)
