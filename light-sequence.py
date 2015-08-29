@@ -20,7 +20,7 @@ i = 0
 while True:
 	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
-	time.sleep(1) # change this according to volume
+	time.sleep(0.01) # change this according to volume
 
 	l,data = inp.read()
 	if l:
