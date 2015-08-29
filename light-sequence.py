@@ -24,15 +24,16 @@ if has_alsa:
 
 	def audio_listener(x):
 		global vol
-		total = 0.42
-		count = 1
+		total = 0.0
+		count = 0
 		
 		while True:
 			l,data = inp.read()
 			if l:
-				vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 7 - total / count)
+				vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 7)
 				total += vol
 				count += 1
+				vol -= total / count
 				
 			time.sleep(0.001)
 
@@ -42,4 +43,4 @@ while True:
 	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
 	time.sleep(max(0.0, 1.0 - vol))
-	print vol
+	print str(vol) + ', ' + str(max(0.0, 1.0 - vol))
