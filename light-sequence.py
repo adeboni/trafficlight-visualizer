@@ -36,5 +36,5 @@ if has_alsa:
 while True:
 	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
-	time.sleep(1.0 - vol)
+	time.sleep(max(0.0, 1.0 - vol - 0.30))
 	print vol
