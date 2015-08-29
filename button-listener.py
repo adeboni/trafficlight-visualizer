@@ -20,10 +20,10 @@ wiringpi.pullUpDnControl(26, 2)
 while True:
 	if wiringpi.digitalRead(23):
 		s.sendto(json.dumps([int(sys.argv[1]), 0]), ('<broadcast>', PORT))
-		sleep(0.05)
+		time.sleep(0.05)
 	elif wiringpi.digitalRead(24):
 		s.sendto(json.dumps([int(sys.argv[1]), 1]), ('<broadcast>', PORT))
-		sleep(0.05)
+		time.sleep(0.05)
 	elif wiringpi.digitalRead(25):
 		s.sendto(json.dumps([int(sys.argv[1]), 2]), ('<broadcast>', PORT))
-		sleep(0.05)
+		time.sleep(0.05)
