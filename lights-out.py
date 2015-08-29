@@ -29,5 +29,5 @@ def toggle(x, y):
 while True:
 	result = select.select([button_socket],[],[])
 	light_change = json.loads(result[0][0].recv(BUFFER))
-	toggle(light_change[1], light_change[0])
+	toggle(light_change[0], light_change[1])
 	light_socket.sendto(json.dumps(lights), ('<broadcast>', LIGHT_PORT))
