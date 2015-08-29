@@ -24,4 +24,4 @@ while True:
 		vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 10)
 	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
-	time.sleep(1 - vol)
+	time.sleep(1.0 - vol)
