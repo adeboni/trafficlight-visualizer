@@ -23,5 +23,5 @@ while True:
 	time.sleep(1) # change this according to volume
 
 	l,data = inp.read()
-    if l:
-       print audioop.max(data, 2)
+	if l:
+		print audioop.max(data, 2)
