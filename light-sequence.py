@@ -21,10 +21,7 @@ while True:
 	time.sleep(0.01)
 	l,data = inp.read()
 	if l:
-		vol = math.log(1.0 * audioop.max(data, 2)) / 15.0
-	#s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
+		vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 10)
+	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
-	print vol
-	#time.sleep(vol)
-
-	
+	time.sleep(vol)
