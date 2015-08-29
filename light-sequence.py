@@ -1,6 +1,6 @@
 #!/usr/bin/env python 
 
-import select, json, socket, sys, alsaaudio, time, audioop
+import select, json, socket, sys, alsaaudio, time, audioop, math
 
 PORT = 50000
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -21,7 +21,7 @@ while True:
 	time.sleep(0.01)
 	l,data = inp.read()
 	if l:
-		vol = 1.0 * audioop.max(data, 2) / 750
+		vol = math.min(1.0, math.log(1.0 * audioop.max(data, 2) / 750))
 	#s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
 	print vol
