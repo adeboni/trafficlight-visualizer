@@ -18,7 +18,7 @@ inp.setperiodsize(160)
 vol = 0.0
 i = 0
 while True:
-	time.sleep(0.01)
+	time.sleep(0.05)
 	l,data = inp.read()
 	if l:
 		vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 10)
