@@ -18,6 +18,7 @@ inp.setperiodsize(160)
 vol = 2.0
 i = 0
 while True:
+	sleep(1.0)
 	l,data = inp.read()
 	if l:
 		vol = 2.0 - 1.0 * audioop.max(data, 2) / 750
