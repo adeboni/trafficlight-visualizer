@@ -9,7 +9,7 @@ s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 seq = [[0,0,0],[0,0,1],[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1]]
 
-inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK)
+inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK,'sysdefault:CARD=1')
 inp.setchannels(1)
 inp.setrate(8000)
 inp.setformat(alsaaudio.PCM_FORMAT_S16_LE)
