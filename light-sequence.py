@@ -24,8 +24,8 @@ if has_alsa:
 
 	def audio_listener(x):
 		global vol
-		total = 0.0
-		count = 0
+		total = 0.3
+		count = 1
 		
 		while True:
 			l,data = inp.read()
