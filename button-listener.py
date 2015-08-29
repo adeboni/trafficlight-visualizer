@@ -8,14 +8,14 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.bind(('', 0))
 s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
-wiringpi.wiringPiSetup()
+#wiringpi.wiringPiSetup()
 wiringpi.wiringPiSetupGpio()
 wiringpi.pinMode(23, 0)
-wiringpi.pullUpDnControl(23, 2)   
+wiringpi.pullUpDnControl(23, 2)
 wiringpi.pinMode(24, 0)
-wiringpi.pullUpDnControl(24, 2) 
+wiringpi.pullUpDnControl(24, 2)
 wiringpi.pinMode(25, 0)
-wiringpi.pullUpDnControl(25, 2) 
+wiringpi.pullUpDnControl(25, 2)
 
 
 while True:
