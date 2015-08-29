@@ -17,17 +17,17 @@ light_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 dimx = 2
 dimy = 3
-light_state = [[0 for x in range(dimx)] for y in range(dimy)]
+lights = [[0 for x in range(dimx)] for y in range(dimy)]
 pattern = [[0,1,0],[1,0,1],[0,1,0]]
 
 def toggle(x, y):
 	for i in [-1, 0, 1]:
 		for j in [-1, 0, 1]:
-			if x+i >= 0 and x+i < dimy and y+j >= 0 and y+j < dimx:
-				light_state[y+j][x+i] ^= pattern[j+1][i+1]
+			if x+j >= 0 and x+j < dimy and y+i >=0 and y+i < dimx:
+				lights[x+j][y+i] ^= pattern[j+1][i+1]
 			
 while True:
 	result = select.select([button_socket],[],[])
 	light_change = json.loads(result[0][0].recv(BUFFER))
 	toggle(light_change[1], light_change[0])
-	light_socket.sendto(json.dumps(light_state), ('<broadcast>', LIGHT_PORT))
+	light_socket.sendto(json.dumps(lights), ('<broadcast>', LIGHT_PORT))
