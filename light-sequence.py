@@ -27,7 +27,7 @@ if has_alsa:
 		while True:
 			l,data = inp.read()
 			if l:
-				vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 5 - 0.5)
+				vol = min(1, math.log(1.0 * audioop.max(data, 2)) / 5 - 0.9)
 			time.sleep(0.001)
 
 	thread.start_new_thread(audio_listener, (0, ))
