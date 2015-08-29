@@ -1,8 +1,10 @@
 #!/usr/bin/env python 
 
 import select, json, socket, sys, time
+import os
 
-if False:
+has_alsa = int(os.system('dpkg -l | grep python-alsaaudio'))
+if has_alsa:
 	import alsaaudio, audioop, thread, math
 
 PORT = 50000
@@ -14,7 +16,7 @@ seq = [[0,0,0],[0,0,1],[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1]]
 vol = 0.0
 i = 0
 
-if False:
+if has_alsa:
 	inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK,'sysdefault:CARD=1')
 	inp.setchannels(1)
 	inp.setrate(8000)
