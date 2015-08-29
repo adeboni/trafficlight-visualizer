@@ -36,4 +36,4 @@ while True:
 	s.sendto(json.dumps([seq[i%len(seq)],seq[i%len(seq)]]), ('<broadcast>', PORT))
 	i += 1
 	time.sleep(max(0.0, 1.0 - vol))
-	print vol
+	print str(vol) + ', ' + str(max(0.0, 1.0 - vol))
