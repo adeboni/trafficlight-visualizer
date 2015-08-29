@@ -3,8 +3,7 @@
 import select, json, socket, sys, time
 import os
 
-has_alsa = int(os.system('dpkg -l | grep python-alsaaudio'))
-print ">>>: " + str(os.system('dpkg -l | grep python-alsaaudio'))
+has_alsa = os.system('dpkg -l | grep python-alsaaudio') == 0
 if has_alsa:
 	import alsaaudio, audioop, thread, math
 
