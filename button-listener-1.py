@@ -17,14 +17,18 @@ wiringpi.pullUpDnControl(19, 2)
 wiringpi.pinMode(26, 0)
 wiringpi.pullUpDnControl(26, 2) 
 
+light_index = int(sys.argv[1])
+light_color = int(sys.argv[2])
+button_pin = int(sys.argv[3])
+state = 0
+
 while True:
-	if not wiringpi.digitalRead(13):
-		s.sendto(json.dumps([int(sys.argv[1]), 2]), ('<broadcast>', PORT))
-		time.sleep(0.2)
-	if not wiringpi.digitalRead(19):
-		s.sendto(json.dumps([int(sys.argv[1]), 1]), ('<broadcast>', PORT))
-		time.sleep(0.2)
-	if not wiringpi.digitalRead(26):
-		s.sendto(json.dumps([int(sys.argv[1]), 0]), ('<broadcast>', PORT))
-		time.sleep(0.2)
-	time.sleep(0.1)
+	if wiringpi.digitalRead(button_pin):
+		state = 0
+		time.sleep(0.1)
+	elif not wiringpi.digitalRead(button_pin):
+		state += 1
+		if state == 3:
+			s.sendto(json.dumps([light_index, light_color]), ('<broadcast>', PORT))
+			print 'button pressed: ' + json.dumps([light_index, light_color, button_pin])
+		time.sleep(0.05)
