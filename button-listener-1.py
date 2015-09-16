@@ -5,7 +5,9 @@ import wiringpi2 as wiringpi
 
 PORT = 50001
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.bind(('', 0))
+# s.bind(('', 0))
+# s.bind(('10.1.3.1', 0))
+s.bind(('192.168.42.1', 0))
 s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 wiringpi.wiringPiSetup()

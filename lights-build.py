@@ -11,7 +11,9 @@ URL = MailProd
 
 LIGHT_PORT = 50000
 light_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-light_socket.bind(('', 0))
+# light_socket.bind(('', 0))
+# light_socket.bind(('10.1.3.10', 0))
+light_socket.bind(('192.168.42.10', 0))
 light_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 dimx = 3
