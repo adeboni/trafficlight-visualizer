@@ -12,10 +12,10 @@ URL = MailProd
 LIGHT_PORT = 50000
 light_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # light_socket.bind(('', 0))
+# light_socket.bind(('en0', 0))
 # light_socket.bind(('10.1.3.10', 0))
 # light_socket.bind(('192.168.42.10', 0))
-# light_socket.bind(('192.168.0.101', 0))
-light_socket.bind(('en0', 0))
+light_socket.bind(('192.168.0.101', 0))
 light_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 dimx = 3
@@ -24,9 +24,9 @@ lights = [[0 for x in range(dimx)] for y in range(dimy)]
 
 def getLights(buildColor):
     return {
-        'red': [1, 0, 0],
+        'red': [0, 0, 1],
         'purple': [0, 1, 0],
-        'blue': [0, 1, 1],
+        'blue': [1, 0, 0],
         'lightgrey': [0, 0, 0],
     }.get(buildColor, [1, 1, 1])
 
