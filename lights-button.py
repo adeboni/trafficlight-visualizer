@@ -5,13 +5,18 @@ import select, json, socket, sys, datetime
 BUTTON_PORT = 50001
 BUFFER = 128
 button_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-button_socket.bind(('0.0.0.0', BUTTON_PORT))
+# button_socket.bind(('0.0.0.0', BUTTON_PORT))
+# button_socket.bind(('192.168.0.101', BUTTON_PORT))
+# button_socket.bind(('en0', BUTTON_PORT))
+button_socket.bind(('', BUTTON_PORT))
 button_socket.setblocking(0)
 
 
 LIGHT_PORT = 50000
 light_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-light_socket.bind(('', 0))
+# light_socket.bind(('', 0))
+# light_socket.bind(('en0', 0))
+light_socket.bind(('192.168.0.101', 0))
 light_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
 def get_time():
@@ -35,7 +40,7 @@ while True:
 	light_change = json.loads(result[0][0].recv(BUFFER))
 	
 	curr_time = get_time()
-	if false and curr_time - slbp > 123:
+	if False and curr_time - slbp > 123:
 		# reset
 		time.sleep(1)
 		lights = [[0 for x in range(dimx)] for y in range(dimy)]
